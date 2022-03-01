@@ -8,19 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="CefSharp.OffScreen.NETCore" Version="98.1.210" />
+    <PackageReference Include="Syncfusion.Pdf.Net.Core" Version="19.4.0.54" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Src\Syncfusion.HtmlToPdfConverter.Cef.Net.Core.Windows.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Syncfusion.Compression.Portable">
-      <HintPath>..\..\Src\Assemblies\Syncfusion.Compression.Portable.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Pdf.Portable">
-      <HintPath>..\..\Src\Assemblies\Syncfusion.Pdf.Portable.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

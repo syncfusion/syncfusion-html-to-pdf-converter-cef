@@ -595,7 +595,7 @@ namespace Syncfusion.HtmlConverter
                     PdfMargins.Bottom -= PdfFooter.Height;
                     document.Template.Bottom = PdfFooter;
                 }
-                document.Template.blinkMargin = PdfMargins;
+                //document.Template.blinkMargin = PdfMargins;
             }
             else
             {

@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>Syncfusion.HtmlConverter.Portable</AssemblyName>
+    <RootNamespace>Syncfusion.HtmlConverter.Portable</RootNamespace>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <EnableDefaultEmbeddedResourceItems>False</EnableDefaultEmbeddedResourceItems>
+    <EnableDefaultItems>false</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SyncfusionFramework4_6;SyncfusionFramework4_5_1;SyncfusionFramework4_5;NETCORE;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SyncfusionFramework4_6;SyncfusionFramework4_5_1;SyncfusionFramework4_5;NETCORE;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-XML|AnyCPU'">
+    <OutputPath>bin\Release-XML\</OutputPath>
+    <DefineConstants>TRACE;SyncfusionFramework4_6;SyncfusionFramework4_5_1;SyncfusionFramework4_5;NETCORE;</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release-XML\Syncfusion.HtmlConverter.Base.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-XML|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug-XML\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SyncfusionFramework4_6;SyncfusionFramework4_5_1;SyncfusionFramework4_5;NETCORE;</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug-XML\Syncfusion.HtmlConverter.Base.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="HtmlToPdfConverter.cs" />
+    <Compile Include="CefConverter.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CefSharp.OffScreen.NETCore" Version="98.1.210" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Syncfusion.Compression.Portable">
+      <HintPath>Assemblies\Syncfusion.Compression.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Portable">
+      <HintPath>Assemblies\Syncfusion.Pdf.Portable.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

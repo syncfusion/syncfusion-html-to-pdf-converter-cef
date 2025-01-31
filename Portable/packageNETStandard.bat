@@ -1,1 +1,0 @@
-nuget pack Syncfusion.HtmlToPdfConverter.Cef.Net.Windows\Syncfusion.HtmlToPdfConverter.Cef.Net.Windows.nuspec -outputdirectory "%userprofile%/.sfnuget"

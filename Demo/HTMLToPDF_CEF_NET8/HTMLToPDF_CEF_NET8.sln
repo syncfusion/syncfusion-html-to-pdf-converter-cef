@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTMLToPDF_CEF_NET8", "HTMLToPDF_CEF_NET8.csproj", "{C00F6773-B41A-437B-9C4B-DED2A083A51F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncfusion.HtmlConverter.Portable_NET80", "..\..\Portable\src\Syncfusion.HtmlConverter.Portable_NET80.csproj", "{5B61EB01-A812-4C4C-A910-2538CB578C26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C00F6773-B41A-437B-9C4B-DED2A083A51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C00F6773-B41A-437B-9C4B-DED2A083A51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C00F6773-B41A-437B-9C4B-DED2A083A51F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B61EB01-A812-4C4C-A910-2538CB578C26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B61EB01-A812-4C4C-A910-2538CB578C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B61EB01-A812-4C4C-A910-2538CB578C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B61EB01-A812-4C4C-A910-2538CB578C26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

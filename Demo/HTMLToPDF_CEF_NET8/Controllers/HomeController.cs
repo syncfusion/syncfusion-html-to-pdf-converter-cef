@@ -30,7 +30,7 @@ namespace HTMLToPDF_CEF_NET8.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public IActionResult ExportToPDF(Url url)
+        public IActionResult ExportToPDF()
         {
             //Initialize HTML to PDF converter.
             HtmlToPdfConverter htmlConverter = new HtmlToPdfConverter(HtmlRenderingEngine.Cef);
@@ -41,7 +41,7 @@ namespace HTMLToPDF_CEF_NET8.Controllers
             //Assign Blink converter settings to HTML converter.
             htmlConverter.ConverterSettings = cefConverterSettings;
             //Convert URL to PDF document.
-            PdfDocument document = htmlConverter.Convert(url.ConversionURL);
+            PdfDocument document = htmlConverter.Convert("https://www.google.co.in/");
             //Create memory stream.
             MemoryStream stream = new MemoryStream();
             //Save and close the document. 

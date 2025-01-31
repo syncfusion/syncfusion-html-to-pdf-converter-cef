@@ -1,0 +1,43 @@
+[0521/140210.426:WARNING:policy_logger.cc(151)] :components\enterprise\browser\controller\chrome_browser_cloud_management_controller.cc(88) Could not create policy manager as CBCM is not enabled.
+[0521/140220.223:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140220.223:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 1 time(s)
+[0521/140220.961:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140220.962:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 2 time(s)
+[0521/140221.724:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140221.724:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 3 time(s)
+[0521/140222.886:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140222.886:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 4 time(s)
+[0521/140223.808:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140223.808:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 5 time(s)
+[0521/140224.274:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140224.274:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 6 time(s)
+[0521/140224.980:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140224.980:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 7 time(s)
+[0521/140225.520:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140225.521:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 8 time(s)
+[0521/140226.252:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140226.252:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 9 time(s)
+[0521/140226.252:FATAL:gpu_data_manager_impl_private.cc(448)] GPU process isn't usable. Goodbye.
+[0521/140335.734:WARNING:policy_logger.cc(151)] :components\enterprise\browser\controller\chrome_browser_cloud_management_controller.cc(88) Could not create policy manager as CBCM is not enabled.
+[0521/140345.611:ERROR:network_service_instance_impl.cc(615)] Network service crashed, restarting service.
+[0521/140346.586:ERROR:network_service_instance_impl.cc(615)] Network service crashed, restarting service.
+[0521/140347.174:ERROR:network_service_instance_impl.cc(615)] Network service crashed, restarting service.
+[0521/140347.737:ERROR:network_service_instance_impl.cc(615)] Network service crashed, restarting service.
+[0521/140348.411:ERROR:network_service_instance_impl.cc(615)] Network service crashed, restarting service.
+[0521/140349.034:ERROR:network_service_instance_impl.cc(615)] Network service crashed, restarting service.
+[0521/140349.736:ERROR:network_service_instance_impl.cc(615)] Network service crashed, restarting service.
+[0521/140350.261:ERROR:network_service_instance_impl.cc(615)] Network service crashed, restarting service.
+[0521/140350.821:ERROR:network_service_instance_impl.cc(615)] Network service crashed, restarting service.
+[0521/140354.578:ERROR:network_service_instance_impl.cc(615)] Network service crashed, restarting service.
+[0521/140355.000:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140355.000:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 1 time(s)
+[0521/140355.832:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140355.835:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 2 time(s)
+[0521/140356.818:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140356.819:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 3 time(s)
+[0521/140357.556:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140357.558:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 4 time(s)
+[0521/140358.086:ERROR:network_service_instance_impl.cc(615)] Network service crashed, restarting service.
+[0521/140358.338:ERROR:gpu_process_host.cc(990)] GPU process exited unexpectedly: exit_code=-2147450749
+[0521/140358.339:WARNING:gpu_process_host.cc(1360)] The GPU process has crashed 5 time(s)
+[0521/140358.974:ERROR:network_service_instance_impl.cc(615)] Network service crashed, restarting service.

@@ -1,0 +1,22 @@
+﻿@model HTMLToPDF_CEF_NET6.Models.Url
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@{
+    Html.BeginForm("ExportToPDF", "Home", FormMethod.Post);
+    {
+        <h4>Enter the URL below to perform conversion</h4>
+        @Html.TextBoxFor(model => model.ConversionURL)
+        <div>
+            <input type="submit" value="Convert HTML to PDF" style="width:150px;height:27px" />
+        </div>
+    }
+    Html.EndForm();
+}

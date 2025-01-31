@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<!-- Copy binaries before the build process -->
+	<Target Name="CopyingBrowserSubProcessBuild" BeforeTargets="Build">
+		<ItemGroup>
+			<RuntimesNativeLibsBuild Include="$(MSBuildThisFileDirectory)..\..\BrowserSubProcess\net6.0\CefSharp.BrowserSubprocess.runtimeconfig.json" />
+		</ItemGroup>
+		<Copy
+			SourceFiles="@(RuntimesNativeLibsBuild)"
+			DestinationFolder="$(OutputPath)runtimes\win-x64\native\%(RecursiveDir)"
+		/>
+	</Target>
+	
+	<!-- Copy binaries before the publish process -->
+	<Target Name="CopyingBrowserSubProcessPublish" BeforeTargets="Publish">
+		<ItemGroup>
+			<RuntimesNativeLibsPublish Include="$(MSBuildThisFileDirectory)..\..\BrowserSubProcess\net6.0\CefSharp.BrowserSubprocess.runtimeconfig.json" />
+		</ItemGroup>
+		<Copy
+			SourceFiles="@(RuntimesNativeLibsPublish)"
+			DestinationFolder="$(PublishDir)runtimes\win-x64\native\%(RecursiveDir)"
+		/>
+	</Target>
+</Project>

@@ -3,11 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <NeutralLanguage>en</NeutralLanguage>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>False</SignAssembly>
     <AssemblyName>Syncfusion.HtmlConverter.Portable</AssemblyName>
 	<Product>Syncfusion.HtmlConverter.Portable</Product>
     <RootNamespace>Syncfusion.HtmlConverter.Portable</RootNamespace>
-	<AssemblyOriginatorKeyFile>sf.snk</AssemblyOriginatorKeyFile>
 	<AssemblyVersion>27.2600.2</AssemblyVersion>
 	<FileVersion>27.2600.2</FileVersion>
 	<Version>27.2600.2</Version>
@@ -23,12 +22,14 @@
     <OutputPath>bin\Release\</OutputPath>
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>TRACE;NetStandard20;</DefineConstants>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>TRACE;DEBUG;NetStandard20;</DefineConstants>
 	<OutputPath>bin\Debug\</OutputPath>
+	<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
   </PropertyGroup>
   
  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Xml|AnyCPU'">
@@ -38,7 +39,20 @@
     <OutputPath>bin\Release-Xml\</OutputPath>
     <DefineConstants>TRACE;NetStandard20;NetStandard;$(SyncfusionLicensing)</DefineConstants>
 	<DocumentationFile>bin\Release-Xml\Syncfusion.HtmlConverter.Portable.xml</DocumentationFile>
+	<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
   </PropertyGroup>
+  
+ <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+   <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+ </PropertyGroup>
+  
+ <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+   <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+ </PropertyGroup>
+  
+ <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-Xml|x64'">
+   <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+ </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CefSharp.OffScreen.NETCore" Version="119.4.30" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />

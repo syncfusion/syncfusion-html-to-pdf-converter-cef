@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <NeutralLanguage>en</NeutralLanguage>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>False</SignAssembly>
     <AssemblyName>Syncfusion.HtmlConverter.Portable</AssemblyName>
 	<Product>Syncfusion.HtmlConverter.Portable</Product>
     <RootNamespace>Syncfusion.HtmlConverter.Portable</RootNamespace>
@@ -29,6 +29,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>TRACE;DEBUG;NetStandard20;AWS</DefineConstants>
 	<OutputPath>bin\Debug\</OutputPath>
+	<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
   </PropertyGroup>
   
  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Xml|AnyCPU'">

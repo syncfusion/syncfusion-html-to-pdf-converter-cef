@@ -77,7 +77,6 @@ namespace Syncfusion.HtmlConverter
         private List<CefForm> m_cefFormCollection = new List<CefForm>();
         private string m_formLink = string.Empty;
         private string m_formQuery = string.Empty;
-        private List<HtmlInternalLink> m_cefBookmarksCollection = new List<HtmlInternalLink>();
         private bool m_enableOfflineMode;
         //constant fields for form fields
         private string TEXTBOX = "text";
@@ -867,31 +866,7 @@ namespace Syncfusion.HtmlConverter
                             }
                         }
                     }
-                    //Adding dummy hyperlink for bookmarks and Toc
-                    if (EnableBookmarks || EnableToc)
-                    {
-                        string[] headerTags = new string[] { "H1", "H2", "H3", "H4", "H5", "H6" };
-                        for (int i = 0; i < headerTags.Length; i++)
-                        {
-                            int htmlHeaderCollection = await webBrowser.EvaluateScriptAsync<int>("document.getElementsByTagName('" + headerTags[i] + "').length").ConfigureAwait(false);
-                            for (int j = 0; j < htmlHeaderCollection; j++)
-                            {
-                                m_formLink = "http://" + Guid.NewGuid().ToString() + "_bookmark.com/";
-                                string headerText = await webBrowser.EvaluateScriptAsync<string>("document.getElementsByTagName('" + headerTags[i] + "').item(" + j + ").innerText").ConfigureAwait(false);
-                                if (!string.IsNullOrEmpty(headerText))
-                                {
-                                    await webBrowser.EvaluateScriptAsync<string>("document.getElementsByTagName('" + headerTags[i] + "').item(" + j + ").innerHTML = document.getElementsByTagName('" + headerTags[i] + "').item(" + j + ").innerHTML + '<a style=" + "color:" + LINKCOLOR + @" href=" + m_formLink + @">&nbsp;</a>'").ConfigureAwait(false);
-
-                                    HtmlInternalLink bookmark = new HtmlInternalLink();
-                                    bookmark.Bounds = RectangleF.Empty;
-                                    bookmark.HeaderTagLevel = headerTags[i];
-                                    bookmark.HeaderContent = headerText;
-                                    bookmark.Href = m_formLink;
-                                    m_cefBookmarksCollection.Add(bookmark);
-                                }
-                            }
-                        }
-                    }
+                  
                     //Replace the HtmlElementID content to body content for Partial HTML Conversion
                     if (!string.IsNullOrEmpty(HtmlElementID) && webBrowser.Address != "about:blank")
                     {
@@ -1249,11 +1224,7 @@ namespace Syncfusion.HtmlConverter
                             }
                         }
                     }
-                    //Getting dummy hyperlink bound values for Form Fields and Bookmarks
-                    if (EnableForm || EnableBookmarks || EnableToc)
-                    {
-                        GetBoundsFromLinks(ldDoc);
-                    }
+                   
                     if (!EnableHyperLink)
                     {
                         PdfAnnotationCollection annotColl = ldDoc.Pages[i].Annotations as PdfLoadedAnnotationCollection;
@@ -1299,63 +1270,8 @@ namespace Syncfusion.HtmlConverter
                     SizeF clientSize = document.Pages[pageCount - 1].GetClientSize();
                     CefLayoutResult = new PdfLayoutResult(document.Pages[pageCount - 1], new RectangleF(0, 0, clientSize.Width, layoutRectangle.Y));
                 }
-                //Add bookmark with heading level hierarchy
-                if ((EnableBookmarks || EnableToc) && (m_cefBookmarksCollection.Count != 0))
-                {
-                    SortBookmarks(document);
-
-                    if (EnableToc && m_cefBookmarksCollection.Count != 0)
-                    {
-                        PdfDocument newdoc = new PdfDocument();
-                        newdoc.PageSettings.Orientation = Orientation;
-
-                        newdoc.PageSettings.Margins.Top = PdfHeader != null ? PdfMargins.Top - PdfHeader.Height : PdfMargins.Top;
-                        newdoc.PageSettings.Margins.Bottom = PdfFooter != null ? PdfMargins.Bottom - PdfFooter.Height : PdfMargins.Bottom;
-                        newdoc.PageSettings.Margins.Left = PdfMargins.Left;
-                        newdoc.PageSettings.Margins.Right = PdfMargins.Right;
-
-                        newdoc.PageSettings.Size = PdfPageSize;
-                        newdoc.PageSettings.Rotate = PageRotateAngle;
-                        newdoc.Pages.Add();
-                        Toc.IsBlinkRenderingEngine = true;
-
-                        if (PdfHeader != null)
-                            Toc.HeaderHeight = PdfHeader.Height;
-                        if (PdfFooter != null)
-                            Toc.FooterHeight = PdfFooter.Height;
-
-                        //Calculate TOC page count
-                        Toc.TocPageCount = Toc.GetRectangleHeightAndTocPageCount(newdoc.Pages[0], m_cefBookmarksCollection);
-
-                        for (int i = 0; i < Toc.TocPageCount - 1; i++)
-                        {
-                            newdoc.Pages.Add();
-                        }
-
-                        newdoc.ImportPageRange(ldDoc, 0, ldDoc.Pages.Count - 1);
-                        Toc.DrawTable(newdoc, newdoc.Pages[0], m_cefBookmarksCollection);
-
-                        document = newdoc;
-                    }
-
-                    if (Toc.TocPageCount > 0)
-                    {
-                        foreach (HtmlInternalLink item in m_cefBookmarksCollection)
-                        {
-                            item.DestinationPageNumber += Toc.TocPageCount;
-                        }
-                        foreach (CefForm item in m_cefFormCollection)
-                        {
-                            item.PageNumber += Toc.TocPageCount;
-                        }
-                    }
-
-                    if (EnableBookmarks)
-                    {
-                        HtmlInternalLink internalLink = new HtmlInternalLink();
-                        internalLink.AddBookmark(document.Pages[0].Graphics.Page as PdfPage, document, m_cefBookmarksCollection);
-                    }
-                }
+               
+                
                 //Creating the PdfForms from cefFormCollection
                 if (EnableForm && m_cefFormCollection.Count > 0)
                 {
@@ -1459,53 +1375,7 @@ namespace Syncfusion.HtmlConverter
         }
         #endregion
         #region Form Fields conversion
-        private void GetBoundsFromLinks(PdfLoadedDocument ldDoc)
-        {
-            for (int i = 0; i < ldDoc.Pages.Count; i++)
-            {
-                //Getting dummy hyperlink bound values for Form Fields and Header tags.
-                PdfAnnotationCollection annotColl = ldDoc.Pages[i].Annotations as PdfLoadedAnnotationCollection;
-                if (annotColl != null)
-                {
-                    for (int j = annotColl.Count - 1; j >= 0; j--)
-                    {
-                        PdfLoadedTextWebLinkAnnotation annot = annotColl[j] as PdfLoadedTextWebLinkAnnotation;
-                        if (annot != null)
-                        {
-                            if (annot.Url.Contains("_bookmark.com"))
-                            {
-                                foreach (HtmlInternalLink cefBookmark in m_cefBookmarksCollection)
-                                {
-                                    if (cefBookmark.Href == annot.Url)
-                                    {
-                                        cefBookmark.Bounds = annot.Bounds;
-                                        cefBookmark.DestinationPageNumber = i + 1;
-                                        cefBookmark.Destination = new PointF(cefBookmark.Bounds.X, cefBookmark.Bounds.Y);
-                                        //Remove the dummy link annotation on the header tags.
-                                        annotColl.RemoveAt(j);
-                                        break;
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                foreach (CefForm cefForm in m_cefFormCollection)
-                                {
-                                    if (cefForm.FormLink == annot.Url)
-                                    {
-                                        cefForm.Bounds = annot.Bounds;
-                                        cefForm.PageNumber = i;
-                                        //Remove the dummy link annotation on the form field.
-                                        annotColl.RemoveAt(j);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+      
         private void CreatePdfForms(PdfDocument doc)
         {
             for (int i = 0; i < m_cefFormCollection.Count; i++)
@@ -1643,30 +1513,7 @@ namespace Syncfusion.HtmlConverter
         #endregion
         #region Bookmark conversion
         //Sort bookmarks collection with destination y position and destination page number.
-        private void SortBookmarks(PdfDocument doc)
-        {
-            //sort bookmarks collection with destination y position
-            m_cefBookmarksCollection.Sort(delegate (HtmlInternalLink Header1, HtmlInternalLink Header2) {
-                return Header1.Bounds.Y.CompareTo(Header2.Bounds.Y);
-            });
-            List<HtmlInternalLink> sortedHeaderCollection = new List<HtmlInternalLink>();
-            //sort bookmarks collection with destination page number
-            for (int i = 1; i <= doc.Pages.Count; i++)
-            {
-                foreach (HtmlInternalLink internalLink in m_cefBookmarksCollection)
-                {
-
-                    if (!(internalLink.Bounds.X == 0 && internalLink.Bounds.Y == 0 && internalLink.Bounds.Width == 0 && internalLink.Bounds.Height == 0))
-                    {
-                        if (internalLink.DestinationPageNumber == i)
-                        {
-                            sortedHeaderCollection.Add(internalLink);
-                        }
-                    }
-                }
-            }
-            m_cefBookmarksCollection = sortedHeaderCollection;
-        }
+      
         //Skipped the extra page added due to dummy link annotation created at new page.
         private PdfDocument SkipExtraPage(PdfDocument document, PdfLoadedDocument ldDoc, int pageCount, float height)
         {

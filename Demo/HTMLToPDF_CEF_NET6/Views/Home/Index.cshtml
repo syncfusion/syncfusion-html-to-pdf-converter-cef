@@ -12,10 +12,9 @@
 @{
     Html.BeginForm("ExportToPDF", "Home", FormMethod.Post);
     {
-        <h4>Enter the URL below to perform conversion</h4>
-        @Html.TextBoxFor(model => model.ConversionURL)
+       
         <div>
-            <input type="submit" value="Convert HTML to PDF" style="width:150px;height:27px" />
+            <input type="submit" value="Convert HTML to PDF" />
         </div>
     }
     Html.EndForm();

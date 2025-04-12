@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,7 +7,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CefSharp.OffScreen.NETCore" Version="119.4.30" />
+		<PackageReference Include="CefSharp.OffScreen.NETCore" Version="134.3.90" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
 		<PackageReference Include="Syncfusion.Pdf.Net.Core" Version="27.2.2" />
 	</ItemGroup>
